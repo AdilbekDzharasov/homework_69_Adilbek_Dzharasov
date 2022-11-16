@@ -40,3 +40,22 @@ def subtract_view(request, *args, **kwargs):
             response.status_code = 400
             return response
 
+
+@csrf_exempt
+def multiply_view(request, *args, **kwargs):
+    if request.method == "POST":
+        if request.body:
+            try:
+                numbers = json.loads(request.body)
+                A = float(numbers.get("A"))
+                B = float(numbers.get("B"))
+                return JsonResponse({'answer': A * B})
+            except ValueError:
+                response = JsonResponse({'error': 'Passed not a number!'})
+                response.status_code = 400
+                return response
+        else:
+            response = JsonResponse({'error': 'Numbers not sent'})
+            response.status_code = 400
+            return response
+
