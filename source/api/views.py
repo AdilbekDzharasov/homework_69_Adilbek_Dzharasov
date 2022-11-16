@@ -23,9 +23,9 @@ def calculator(method, body):
     A = float(numbers.get("A"))
     B = float(numbers.get("B"))
     if method == 'add':
-        return JsonResponse({'answer': (A + B)})
+        return JsonResponse({'answer': "%.2f" % (A + B)})
     elif method == 'subtract':
-        return JsonResponse({'answer': A - B})
+        return JsonResponse({'answer': "%.2f" % (A - B)})
     elif method == 'multiply':
         return JsonResponse({'answer': "%.2f" % (A * B)})
     elif method == 'divide':
